@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Login</div>
+        <div class="content">
+            <form action="/login" method="POST">
+                <div class="user-details-1">
+                    <div class="input-box">
+                        <span class="details">Username</span>
+                        <input type="text" placeholder="Enter your username" name="userName" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="text" placeholder="Enter your password" name="password" required>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+            {{#if successMessage}}
+            <p>{{successMessage}}</p>
+            {{/if}}
+            {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+            {{/if}}
+        </div>
+        <div class="login-register">
+            <p>Not a user? <a href="/register">Register</a></p>
+        </div>
+    </div>
+    <script src="src/app.js"></script>
+</body>
+
+</html>
