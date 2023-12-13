@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express')
 const path = require("path")
 const app = express()
 const hbs = require("hbs")
+const mongoURI = process.env.MONGO_URI;
 
 // require("./db/conn")
 const Register = require('./models/registers');
@@ -29,7 +31,7 @@ app.get('/register', (req, res) => {
     res.render("register");
 });
 
-mongoose.connect('mongodb+srv://admin:12345admin@adarshapi.feapla9.mongodb.net/Node-API?retryWrites=true&w=majority')
+mongoose.connect(mongoURI)
 .then(() => {
     console.log('Connected to MongoDB!')
     app.listen(process.env.PORT || port, () => {
