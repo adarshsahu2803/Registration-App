@@ -3,8 +3,9 @@ const path = require("path")
 const app = express()
 const hbs = require("hbs")
 
-require("./db/conn")
+// require("./db/conn")
 const Register = require('./models/registers');
+const { default: mongoose } = require('mongoose')
 
 const port = 3000
 
@@ -28,9 +29,20 @@ app.get('/register', (req, res) => {
     res.render("register");
 });
 
-app.listen(process.env.PORT || port, () => {
-    console.log(`Node API app is running on port ${port}`)
+mongoose.connect('mongodb+srv://admin:12345admin@adarshapi.feapla9.mongodb.net/Node-API?retryWrites=true&w=majority')
+.then(() => {
+    console.log('Connected to MongoDB!')
+    app.listen(process.env.PORT || port, () => {
+        console.log(`Node API app is running on port ${port}`)
+    })
+    
+}).catch((error) => {
+    console.log(error)
 })
+
+// app.listen(process.env.PORT || port, () => {
+//     console.log(`Node API app is running on port ${port}`)
+// })
 
 app.post('/register', async (req, res) => {
     try {
