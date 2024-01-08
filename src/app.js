@@ -99,3 +99,8 @@ app.post('/login', async (req, res) => {
         res.status(500).send(error.message);
     }
 });
+
+
+app.get('/user', (req, res) => {
+    res.json({message: "hello"})
+})
